@@ -3,19 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>POLARITY: MAGNETIC RIFT — Official Website & Privacy Policy</title>
-    <meta name="description" content="Official website and privacy policy for Polarity: Magnetic Rift — Tactical Quantum Circuit Puzzle on Google Play. Compliant with India's DPDP Act 2023 and Google Play Developer Policies.">
+    <title>Privacy Policy — Polarity: Magnetic Rift</title>
+    <meta name="description" content="Official Privacy Policy for Polarity: Magnetic Rift on Android. Learn how we handle your gameplay data, cloud saves, and player privacy with complete transparency.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #0A0916;
-            --card-bg: #141324;
+            --bg-deep: #07060f;
+            --bg-card: #121021;
+            --bg-elevated: #1a1730;
             --cyan: #00E5FF;
+            --cyan-glow: rgba(0, 229, 255, 0.25);
             --coral: #FF5C6B;
+            --coral-glow: rgba(255, 92, 107, 0.25);
             --emerald: #00E676;
             --gold: #FFD54F;
-            --text-main: #FFFFFF;
-            --text-muted: #A0A0BA;
-            --border: rgba(255, 255, 255, 0.1);
+            --magenta: #D946EF;
+            --text-primary: #F8FAFC;
+            --text-secondary: #94A3B8;
+            --text-muted: #64748B;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-accent: rgba(0, 229, 255, 0.3);
         }
 
         * {
@@ -25,303 +34,664 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.65;
-            padding: 0;
-            margin: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-deep);
+            color: var(--text-primary);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Ambient background glow */
+        .ambient-glow {
+            position: fixed;
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 229, 255, 0.12) 0%, rgba(217, 70, 239, 0.08) 40%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
         }
 
         .container {
-            max-width: 880px;
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 40px 20px 80px 20px;
+            padding: 40px 24px 100px 24px;
         }
 
+        /* Header */
         header {
             text-align: center;
-            padding: 50px 0 35px 0;
-            border-bottom: 1px solid var(--border);
+            padding: 40px 0 30px 0;
+            border-bottom: 1px solid var(--border-subtle);
         }
 
-        .badge {
-            display: inline-block;
+        .brand-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: 'JetBrains Mono', monospace;
             font-size: 11px;
-            font-weight: 800;
-            letter-spacing: 2px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
             padding: 6px 14px;
-            border-radius: 20px;
-            background: rgba(0, 229, 255, 0.12);
+            border-radius: 999px;
+            background: rgba(0, 229, 255, 0.1);
             color: var(--cyan);
-            border: 1px solid rgba(0, 229, 255, 0.3);
-            margin-bottom: 16px;
+            border: 1px solid var(--border-accent);
+            margin-bottom: 20px;
+        }
+
+        .pulse-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background-color: var(--cyan);
+            box-shadow: 0 0 8px var(--cyan);
         }
 
         h1 {
-            font-size: 36px;
+            font-size: clamp(32px, 5vw, 44px);
             font-weight: 900;
-            letter-spacing: 2px;
-            margin-bottom: 8px;
-            background: linear-gradient(135deg, var(--cyan) 0%, #FFFFFF 50%, var(--coral) 100%);
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #FFFFFF 30%, var(--cyan) 75%, var(--magenta) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .subtitle {
-            font-size: 15px;
-            color: var(--text-muted);
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            font-size: 16px;
+            color: var(--text-secondary);
+            max-width: 620px;
+            margin: 0 auto;
         }
 
-        .features-grid {
+        .policy-meta {
+            margin-top: 18px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-size: 13px;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .policy-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Highlight Grid */
+        .highlights-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 16px;
             margin: 36px 0;
         }
 
-        .feature-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
+        .highlight-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
             border-radius: 16px;
-            padding: 22px;
-            text-align: center;
+            padding: 22px 20px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
         }
 
-        .feature-card h3 {
-            font-size: 16px;
-            margin-bottom: 6px;
-            color: var(--cyan);
+        .highlight-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(0, 229, 255, 0.4);
         }
 
-        .feature-card p {
-            font-size: 13px;
-            color: var(--text-muted);
-        }
-
-        .content-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 36px 32px;
-            margin-top: 30px;
-        }
-
-        .content-card h2 {
+        .highlight-icon {
             font-size: 24px;
-            font-weight: 800;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        .highlight-card h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-primary);
             margin-bottom: 6px;
-            color: var(--text-main);
         }
 
-        .last-updated {
-            font-size: 13px;
-            color: var(--text-muted);
-            margin-bottom: 24px;
-            display: block;
+        .highlight-card p {
+            font-size: 13.5px;
+            color: var(--text-secondary);
+            line-height: 1.5;
         }
 
-        .content-card h3 {
-            font-size: 18px;
-            color: var(--cyan);
-            margin: 28px 0 10px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-            padding-bottom: 4px;
+        /* Summary Matrix Table */
+        .summary-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 18px;
+            padding: 28px;
+            margin: 32px 0;
+            overflow-x: auto;
         }
 
-        .content-card h4 {
-            font-size: 15px;
-            color: var(--emerald);
-            margin: 16px 0 6px 0;
-        }
-
-        .content-card p, .content-card ul, .content-card ol {
-            font-size: 14.5px;
-            color: #C8C8DC;
-            margin-bottom: 14px;
-        }
-
-        .content-card ul, .content-card ol {
-            padding-left: 24px;
-        }
-
-        .content-card li {
+        .summary-box h2 {
+            font-size: 20px;
+            font-weight: 800;
             margin-bottom: 8px;
+            color: var(--text-primary);
         }
 
-        .content-card strong {
-            color: #FFFFFF;
+        .summary-box p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
         }
 
-        .ads-notice {
-            background: rgba(0, 230, 118, 0.08);
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13.5px;
+            text-align: left;
+        }
+
+        th {
+            background: var(--bg-elevated);
+            color: var(--cyan);
+            font-weight: 700;
+            padding: 12px 14px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        th:first-child { border-top-left-radius: 8px; }
+        th:last-child { border-top-right-radius: 8px; }
+
+        td {
+            padding: 14px;
+            border-bottom: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            vertical-align: top;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        td strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .badge-tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .tag-optional {
+            background: rgba(0, 230, 118, 0.15);
+            color: var(--emerald);
             border: 1px solid rgba(0, 230, 118, 0.3);
-            border-radius: 12px;
+        }
+
+        .tag-local {
+            background: rgba(0, 229, 255, 0.15);
+            color: var(--cyan);
+            border: 1px solid rgba(0, 229, 255, 0.3);
+        }
+
+        .tag-ads {
+            background: rgba(255, 213, 79, 0.15);
+            color: var(--gold);
+            border: 1px solid rgba(255, 213, 79, 0.3);
+        }
+
+        /* Document Body */
+        .content-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: 40px 36px;
+            margin-top: 32px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .section-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--cyan);
+            background: rgba(0, 229, 255, 0.1);
+            padding: 4px 10px;
+            border-radius: 8px;
+            border: 1px solid var(--border-accent);
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+
+        p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            line-height: 1.75;
+        }
+
+        p strong {
+            color: var(--text-primary);
+        }
+
+        ul, ol {
+            padding-left: 24px;
+            margin-bottom: 18px;
+        }
+
+        li {
+            font-size: 14.5px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            line-height: 1.65;
+        }
+
+        li strong {
+            color: var(--text-primary);
+        }
+
+        /* Callout Box */
+        .callout {
+            background: var(--bg-elevated);
+            border-left: 3px solid var(--cyan);
+            border-radius: 0 12px 12px 0;
             padding: 16px 20px;
             margin: 20px 0;
         }
 
-        .ads-notice a {
-            color: var(--emerald);
-            text-decoration: underline;
+        .callout p {
+            margin-bottom: 0;
+            font-size: 14px;
         }
 
-        .grievance-box {
-            background: rgba(0, 229, 255, 0.05);
-            border: 1px solid rgba(0, 229, 255, 0.25);
-            border-radius: 14px;
-            padding: 24px;
-            margin-top: 30px;
+        .callout.alert {
+            border-left-color: var(--coral);
+            background: rgba(255, 92, 107, 0.08);
         }
 
-        .grievance-box h3 {
-            margin-top: 0;
-            border-bottom: none;
-            padding-bottom: 0;
-            color: var(--emerald);
+        .callout.success {
+            border-left-color: var(--emerald);
+            background: rgba(0, 230, 118, 0.08);
         }
 
         code {
+            font-family: 'JetBrains Mono', monospace;
             background: rgba(255, 255, 255, 0.08);
             padding: 2px 6px;
             border-radius: 4px;
             font-size: 13px;
-            color: var(--gold);
+            color: var(--cyan);
         }
 
-        footer {
-            text-align: center;
-            margin-top: 50px;
-            color: var(--text-muted);
-            font-size: 13px;
-            border-top: 1px solid var(--border);
-            padding-top: 30px;
-        }
-
-        footer a {
+        a {
             color: var(--cyan);
             text-decoration: none;
+            transition: color 0.15s ease;
+        }
+
+        a:hover {
+            color: #70F3FF;
+            text-decoration: underline;
+        }
+
+        /* Contact Box */
+        .contact-card {
+            background: linear-gradient(135deg, rgba(0, 229, 255, 0.06) 0%, rgba(217, 70, 239, 0.06) 100%);
+            border: 1px solid var(--border-accent);
+            border-radius: 16px;
+            padding: 28px;
+            margin-top: 36px;
+        }
+
+        .contact-card h3 {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .contact-card p {
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        .contact-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+            font-size: 13.5px;
+        }
+
+        .contact-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 10px;
+            padding: 12px 14px;
+        }
+
+        .contact-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-family: 'JetBrains Mono', monospace;
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .contact-value {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-subtle);
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        footer p {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        @media (max-width: 640px) {
+            .container { padding: 24px 16px 60px 16px; }
+            .content-card { padding: 28px 20px; }
+            .summary-box { padding: 20px 16px; }
         }
     </style>
 </head>
 <body>
+    <div class="ambient-glow"></div>
+
     <div class="container">
+        <!-- Brand Header -->
         <header>
-            <div class="badge">Official Website & Privacy Portal</div>
+            <div class="brand-badge">
+                <span class="pulse-dot"></span>
+                Official Player Privacy Policy
+            </div>
             <h1>POLARITY: MAGNETIC RIFT</h1>
-            <p class="subtitle">Tactical Quantum Circuit Puzzle &bull; Android</p>
+            <p class="subtitle">Tactical Quantum Circuit Puzzle for Android &bull; Developer: Rakesh Sharma</p>
+            <div class="policy-meta">
+                <span><span>App ID:</span> <code>com.games.PolarityMR.Android</code></span>
+                <span>&bull;</span>
+                <span><span>Effective:</span> November 7, 2026</span>
+                <span>&bull;</span>
+                <span><span>Status:</span> Production Active</span>
+            </div>
         </header>
 
-        <section class="features-grid">
-            <div class="feature-card">
-                <h3>Offline Playable</h3>
-                <p>Enjoy Campaign, Endless Lab, and Custom Level Editor with zero account required.</p>
+        <!-- Highlights Grid -->
+        <section class="highlights-grid">
+            <div class="highlight-card">
+                <div class="highlight-icon">🔒</div>
+                <h3>Privacy by Design</h3>
+                <p>The entire game (Campaign, Endless Lab, Level Editor) is fully playable offline. No mandatory account is ever required.</p>
             </div>
-            <div class="feature-card">
-                <h3>Google Cloud Save</h3>
-                <p>Optional Firebase synchronization securely protects and restores your campaign stars across devices.</p>
+            <div class="highlight-card">
+                <div class="highlight-icon">☁️</div>
+                <h3>Optional Cloud Save</h3>
+                <p>Sign in with Google only if you wish to sync your stars and unlocked chapters across devices. You can sign out with one tap anytime.</p>
             </div>
-            <div class="feature-card">
-                <h3>Global Leaderboards</h3>
-                <p>Play Games Services v2 integration allows players to compete globally in Magnetic Blitz mode.</p>
+            <div class="highlight-card">
+                <div class="highlight-icon">🏆</div>
+                <h3>Fair Play &amp; Security</h3>
+                <p>Google Play Games leaderboards and FreeRASP anti-tamper protect fair competition without invading personal device storage.</p>
             </div>
         </section>
 
-        <div class="ads-notice">
-            <strong>AdMob Publisher Verification:</strong> Our authorized digital ads declaration is available at <a href="app-ads.txt">app-ads.txt</a> in accordance with IAB Tech Lab standards.
-        </div>
+        <!-- Quick Summary Matrix -->
+        <section class="summary-box">
+            <h2>Data Collection at a Glance</h2>
+            <p>A transparent breakdown of what data Polarity uses, where it is stored, and your controls.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Specific Data Processed</th>
+                        <th>Storage Location</th>
+                        <th>Your Control</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Local Game State</strong> <span class="badge-tag tag-local">Local</span></td>
+                        <td>Campaign level stars, par moves, lifetime telemetry (moves, undos, rifts), custom puzzle designs.</td>
+                        <td>Device only (Android SharedPreferences)</td>
+                        <td>Clear data via Android Settings anytime.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Google Cloud Save</strong> <span class="badge-tag tag-optional">Optional</span></td>
+                        <td>Google Display Name, Email, Profile Picture URL, Firebase Auth UID, progress snapshots.</td>
+                        <td>Google Firebase (Encrypted Cloud Firestore)</td>
+                        <td>Tap <strong>[Sign Out]</strong> directly in your Profile, or request full cloud erasure.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Play Games Ranks</strong> <span class="badge-tag tag-optional">Optional</span></td>
+                        <td>Play Games GamerTag, Player ID, Magnetic Blitz score &amp; combo count.</td>
+                        <td>Google Play Games Services</td>
+                        <td>Disconnect Play Games profile in game or in Google Play Games settings.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Advertising</strong> <span class="badge-tag tag-ads">AdMob</span></td>
+                        <td>Anonymous Google Advertising ID (GAID), ad completion events, coarse diagnostic signals.</td>
+                        <td>Google AdMob servers</td>
+                        <td>Reset/delete Advertising ID in Android Settings &gt; Google &gt; Ads.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
 
+        <!-- Main Content -->
         <article class="content-card">
-            <h2>Privacy Policy</h2>
-            <span class="last-updated">Effective Date: November 2, 2026 &bull; Compliant with India's DPDP Act, 2023 &amp; Google Play Developer Policies</span>
 
-            <p>Welcome to <strong>POLARITY: MAGNETIC RIFT</strong> (Application Package: <code>com.games.PolarityMR.Android</code>). We respect your privacy and are committed to safeguarding personal data in accordance with global standards and India's <strong>Digital Personal Data Protection Act, 2023 (DPDP Act)</strong>.</p>
-
-            <h3>1. Notice &amp; Consent (DPDP Act, 2023 &mdash; Section 5 &amp; 6)</h3>
-            <p>This Privacy Policy serves as an itemized statutory notice under Section 5 of the DPDP Act 2023 detailing what digital personal data is collected, its specified purpose, how you can exercise your Data Principal rights, and how to reach our Grievance Officer.</p>
-            <ul>
-                <li><strong>Free &amp; Affirmative Consent:</strong> Cloud Save and Google Play Games features are entirely optional and enabled solely through clear, affirmative action when you choose to tap <code>[Sign In with Google]</code> or <code>[Connect Play Games]</code>.</li>
-                <li><strong>Core Game Playable Offline:</strong> You can play the full Campaign, Endless Lab, and Sandbox Level Editor without creating an account or transmitting any personal data.</li>
-            </ul>
-
-            <h3>2. Categories of Data Collected &amp; Specified Purposes</h3>
-
-            <h4>A. On-Device Local Data (Non-Personal)</h4>
-            <p>Stored exclusively in Android's sandboxed private storage (<code>SharedPreferences</code>):</p>
-            <ul>
-                <li>Campaign progression, chamber unlocks, star ratings, and par moves.</li>
-                <li>Custom puzzle blueprints crafted in the Sandbox Level Editor.</li>
-                <li>Haptic, soundtrack volume, and visual studio preferences.</li>
-                <li>Gameplay telemetry (total moves, undos used, fastest solve times).</li>
-            </ul>
-
-            <h4>B. Google Account &amp; Firebase Cloud Save (Voluntary)</h4>
-            <p>When you choose to sign in to Google Cloud Save:</p>
-            <ul>
-                <li><strong>Data Processed:</strong> Email address, public display name, avatar URL (if provided), and unique Firebase Authentication User ID (UID).</li>
-                <li><strong>Specified Purpose:</strong> To provide encrypted cloud backup and cross-device synchronization of your level progression and stars via Firebase Firestore.</li>
-            </ul>
-
-            <h4>C. Google Play Games Services v2 (Voluntary)</h4>
-            <p>When you connect your Google Play Games profile:</p>
-            <ul>
-                <li><strong>Data Processed:</strong> GamerTag (e.g., <code>DustyBug578</code>), Google Play Games Player ID, and Magnetic Blitz high scores.</li>
-                <li><strong>Specified Purpose:</strong> To populate public global Magnetic Blitz Leaderboards and calculate all-time percentile rankings.</li>
-            </ul>
-
-            <h4>D. Third-Party Advertising (Google AdMob)</h4>
-            <p>To support ongoing game development and server operations, POLARITY integrates Google AdMob for optional rewarded video ads (e.g., to earn in-game hints or undos) and occasional interstitials:</p>
-            <ul>
-                <li>AdMob may process anonymous device identifiers (GAID), coarse IP-derived geographic region, and ad interaction metrics strictly for ad delivery, fraud prevention, and frequency capping in compliance with Google Play Developer Policies.</li>
-                <li>Review <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a> and <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Google Play Services Advertising Policy</a>.</li>
-            </ul>
-
-            <h3>3. Children’s Personal Data (DPDP Act, 2023 &mdash; Section 9 &amp; COPPA)</h3>
-            <p>Under the DPDP Act 2023, a child is defined as an individual who has not completed 18 years of age. POLARITY does not track, profile, monitor the behavior of, or direct targeted advertisements to children. If you are a minor under 18 years of age, please obtain verifiable consent from your parent or lawful guardian before connecting your Google Account or utilizing cloud features.</p>
-
-            <h3>4. Data Principal Statutory Rights (DPDP Act, 2023 &mdash; Sections 11&ndash;14)</h3>
-            <p>As a Data Principal under the DPDP Act 2023, you have the following enforceable rights:</p>
-            <ol>
-                <li><strong>Right to Access (Section 11):</strong> Request a summary of your personal data processed and third-party identities with whom data was shared.</li>
-                <li><strong>Right to Correction &amp; Erasure (Section 12):</strong> Request correction of inaccurate information or complete deletion of your cloud save data.</li>
-                <li><strong>Right to Withdraw Consent (Section 6(4)):</strong> Disconnect your Google Account or Play Games profile anytime directly in your in-game Player Profile.</li>
-                <li><strong>Right of Grievance Redressal (Section 13):</strong> Have your privacy concerns addressed by our designated Grievance Officer within 30 days.</li>
-                <li><strong>Right to Nominate (Section 14):</strong> Nominate an individual to exercise your privacy rights in the event of death or incapacity.</li>
-            </ol>
-
-            <h3>5. Data Deletion &amp; Retention</h3>
-            <ul>
-                <li><strong>Local Device Wipe:</strong> Delete all local game progress anytime via <strong>Android Settings &gt; Apps &gt; POLARITY: MAGNETIC RIFT &gt; Storage &gt; Clear Data</strong>, or by uninstalling the application.</li>
-                <li><strong>Cloud Data Erasure:</strong> To delete your Google Cloud Save account and Firebase UID permanently, email our Grievance Officer at <a href="mailto:privacy@polarity.game">privacy@polarity.game</a> (or <a href="mailto:support@polarity.game">support@polarity.game</a>) with the subject line <em>"Data Erasure Request"</em>. All cloud records will be verified and permanently purged within 30 days.</li>
-            </ul>
-
-            <h3>6. Data Security &amp; Safeguards (Section 8)</h3>
-            <p>All network communications utilize industry-standard TLS 1.3 encryption. Cloud records are protected by declarative Firebase security rules restricting access exclusively to authenticated owners. In the event of a personal data breach, notifications will be provided to the <strong>Data Protection Board of India (DPBI)</strong> and affected users as prescribed by law.</p>
-
-            <h3>7. Multilingual Notice Provision (Section 5(3))</h3>
-            <p>In accordance with Section 5(3) of the DPDP Act 2023, this notice is provided in English. If you require this policy in any of the <strong>22 languages specified in the Eighth Schedule to the Constitution of India</strong> (such as Hindi, Bengali, Tamil, Telugu, Marathi, Gujarati, Kannada, Malayalam, etc.), please contact our Grievance Officer and a translated copy will be furnished.</p>
-
-            <div class="grievance-box">
-                <h3>8. Grievance Officer &amp; Contact</h3>
-                <p>If you have any questions, wish to exercise any of your statutory rights, or have a grievance concerning your personal data, please contact our designated Grievance Officer:</p>
-                <p style="margin-top: 10px;">
-                    <strong>Grievance Officer:</strong> Rakesh Sharma<br>
-                    <strong>Application:</strong> POLARITY: MAGNETIC RIFT (<code>com.games.PolarityMR.Android</code>)<br>
-                    <strong>Email:</strong> <a href="mailto:rakeshsharma0918@gmail.com">rakeshsharma0918@gmail.com</a> / <a href="mailto:support@polarity.game">support@polarity.game</a><br>
-                    <strong>Official Repository:</strong> <a href="https://github.com/Rakesh0918/polarity-game" target="_blank" rel="noopener">github.com/Rakesh0918/polarity-game</a><br>
-                    <strong>Resolution SLA:</strong> Within 30 days
-                </p>
-                <p style="font-size: 13px; color: var(--text-muted); margin-top: 10px; margin-bottom: 0;">
-                    If your grievance is not resolved satisfactorily, you have the right to file a complaint before the <strong>Data Protection Board of India (DPBI)</strong>.
-                </p>
+            <!-- Section 1 -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">01</span>
+                    <h2 class="section-title">Introduction &amp; Our Philosophy</h2>
+                </div>
+                <p>Welcome to <strong>Polarity: Magnetic Rift</strong> (developed by Rakesh Sharma, referred to as "we", "us", or "our"). We are committed to building engaging, thoughtful puzzle games while treating player privacy with the highest respect and transparency.</p>
+                <p>This Privacy Policy outlines how your data is collected, used, protected, and deleted when you download and play <strong>Polarity: Magnetic Rift</strong> on Android devices. We design our architecture around minimal data collection: <strong>you can complete every single level in the game without creating an account, sharing an email address, or providing personal information.</strong></p>
             </div>
+
+            <!-- Section 2 -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">02</span>
+                    <h2 class="section-title">Information We Collect and How We Use It</h2>
+                </div>
+
+                <p>We classify the data processed by Polarity into four distinct categories:</p>
+
+                <h3>A. Gameplay &amp; Progress Data (Generated Through Play)</h3>
+                <p>To deliver game progression, star rewards, and puzzle state persistence, the app maintains your gameplay statistics:</p>
+                <ul>
+                    <li><strong>Puzzle Progression:</strong> Cleared level IDs, 1&ndash;3 star ratings, par move counts, and fastest completion times.</li>
+                    <li><strong>Lifetime Telemetry:</strong> Cumulative moves made, undos used, wormhole rifts warped, prism deflections, Endless Lab chamber records, and daily challenge completion streaks.</li>
+                    <li><strong>In-Game Economy:</strong> Daily free hint, undo, and reset inventory counts, and optional Pro unlock status.</li>
+                    <li><strong>Custom Level Blueprints:</strong> Puzzles designed by you in the Level Editor or imported from QR codes and deep links.</li>
+                </ul>
+                <div class="callout success">
+                    <p><strong>Storage:</strong> All gameplay progression is stored locally on your device by default. It is only synchronized to secure cloud servers if you explicitly enable Google Cloud Save.</p>
+                </div>
+
+                <h3>B. Google Account Information (Optional Cloud Save)</h3>
+                <p>When you voluntarily link your Google Account via the in-game <strong>Player Profile &gt; Cloud Save</strong> card, we process:</p>
+                <ul>
+                    <li>Your <strong>Google Account Display Name</strong>, <strong>Email Address</strong>, and <strong>Profile Picture URL</strong>.</li>
+                    <li>A unique, randomized <strong>Firebase Authentication User ID (UID)</strong>.</li>
+                </ul>
+                <p><strong>Purpose:</strong> We use this information exclusively to identify your cloud save slot, enabling you to restore your campaign progress, stars, and trophies across multiple devices or after reinstalling the app.</p>
+                <p><strong>Sign Out Guarantee:</strong> You can disconnect your Google Account at any time by tapping <strong>[Sign Out]</strong> on the Google Cloud Save card. When signed out, the game immediately reverts to an anonymous local session.</p>
+
+                <h3>C. Google Play Games Services (Optional)</h3>
+                <p>If you connect to Google Play Games, the game interfaces with Google's Play Games Services v2:</p>
+                <ul>
+                    <li>Your public <strong>GamerTag</strong> and <strong>Player ID</strong>.</li>
+                    <li>High scores and combo records achieved in <strong>Magnetic Blitz</strong> mode submitted to the official Google Play Blitz leaderboard (<code>CgkIhO-OjbUUEAIQAA</code>).</li>
+                </ul>
+                <p><strong>Purpose:</strong> To showcase global rankings, compare high scores with friends, and celebrate achievement milestones.</p>
+
+                <h3>D. Device, Diagnostics &amp; Security Data</h3>
+                <p>To maintain game stability, deliver advertisements, and prevent leaderboard manipulation, the app processes standard technical signals:</p>
+                <ul>
+                    <li><strong>Google Mobile Ads (AdMob):</strong> Device Advertising ID (GAID), coarse geographic region (country/city level from IP), and ad delivery metrics (impressions, reward completions).</li>
+                    <li><strong>App Integrity (Talsec FreeRASP):</strong> On-device checks verifying the integrity of the application binary (detecting rooted environments, debuggers, or malicious hook injections) to safeguard fair leaderboard competition. <em>This check runs entirely on your device and does not upload personal files.</em></li>
+                </ul>
+            </div>
+
+            <!-- Section 3 -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">03</span>
+                    <h2 class="section-title">In-Game Advertising (Google AdMob)</h2>
+                </div>
+                <p>Polarity is free to download and play. To sustain server costs and ongoing puzzle development, we integrate <strong>Google AdMob</strong> to display advertising:</p>
+                <ul>
+                    <li><strong>Rewarded Video Ads (Player-Initiated):</strong> You can voluntarily choose to watch a video ad in exchange for bonus undos, hints, or chamber resets. These ads are never forced.</li>
+                    <li><strong>Interstitials:</strong> Brief transition ads shown between puzzle batches, with built-in cooldowns and frequency capping.</li>
+                    <li><strong>Banner Ads:</strong> Standard non-intrusive display banners placed in designated interface areas.</li>
+                </ul>
+                <div class="callout">
+                    <p><strong>Your Advertising Controls:</strong> You can reset or delete your Google Advertising ID at any time on your Android device by going to <strong>Settings &gt; Google &gt; Ads</strong> and selecting <em>"Reset advertising ID"</em> or <em>"Delete advertising ID"</em>.</p>
+                </div>
+                <p>For more information on how Google processes ad data, please review <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Google's Advertising Privacy Policies</a>.</p>
+            </div>
+
+            <!-- Section 4 -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">04</span>
+                    <h2 class="section-title">Device Permissions &amp; Hardware Usage</h2>
+                </div>
+                <p>Polarity requests only the minimum permissions essential for gameplay features:</p>
+                <ul>
+                    <li><strong>INTERNET &amp; NETWORK STATE:</strong> Required for optional Google Cloud Save, Google Play Games leaderboards, and AdMob ads.</li>
+                    <li><strong>VIBRATE:</strong> Used solely to provide tactile haptic feedback during magnet pulls, circuit snaps, win celebrations, and deadlock alerts. Can be toggled on/off in Audio Studio.</li>
+                    <li><strong>READ_MEDIA_IMAGES (Optional / On-Demand):</strong> Requested <em>only</em> if you choose to import a custom level by selecting a QR code screenshot from your device gallery. The app reads only the selected QR image to decode the level blueprint.</li>
+                </ul>
+            </div>
+
+            <!-- Section 5 -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">05</span>
+                    <h2 class="section-title">Data Storage, Retention &amp; Security</h2>
+                </div>
+                <p>We implement industry-standard safeguards to protect your game records:</p>
+                <ul>
+                    <li><strong>Encryption in Transit:</strong> All communications between the app and cloud services (Firebase, Google Play, AdMob) use secure Transport Layer Security (TLS 1.3 / HTTPS).</li>
+                    <li><strong>Strict Access Control:</strong> Cloud Firestore security rules ensure that your saved game documents can only be accessed or modified by your authenticated account.</li>
+                    <li><strong>Retention:</strong> Local game data remains on your device until you clear app storage or uninstall the game. Cloud backup records are retained as long as your account remains active or until you request deletion.</li>
+                </ul>
+            </div>
+
+            <!-- Section 6 -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">06</span>
+                    <h2 class="section-title">Your Rights, Data Deletion &amp; Account Control</h2>
+                </div>
+                <p>We believe players must have complete authority over their personal information. You have the following direct controls:</p>
+                <ul>
+                    <li><strong>Instant Sign Out:</strong> Tap <strong>[Sign Out]</strong> on the Google Cloud Save card in the Player Profile at any time to sever the cloud link immediately.</li>
+                    <li><strong>Local Data Reset:</strong> You can completely erase all local saves, telemetry, and custom puzzles by going to <strong>Android Settings &gt; Apps &gt; Polarity: Magnetic Rift &gt; Storage &gt; Clear Storage</strong>.</li>
+                    <li><strong>Permanent Cloud Data Deletion:</strong> If you linked a Google Account and wish to permanently delete all cloud records, progress files, and leaderboard entries associated with your account, please send an email to <a href="mailto:rakeshsharma0918@gmail.com">rakeshsharma0918@gmail.com</a> with the subject line <em>"Polarity - Account &amp; Data Erasure Request"</em> from the email address linked to your Google Cloud Save. Your data will be permanently purged within 30 days.</li>
+                </ul>
+            </div>
+
+            <!-- Section 7 -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">07</span>
+                    <h2 class="section-title">Children's Privacy Protection</h2>
+                </div>
+                <p><strong>Polarity: Magnetic Rift</strong> is a general audience tactical puzzle game designed for players of all ages. We do not knowingly collect, solicit, or market personal information from children under the age of 13 (or under 16 in certain European jurisdictions), in strict compliance with the U.S. Children's Online Privacy Protection Act (COPPA), the EU General Data Protection Regulation (GDPR), and India's Digital Personal Data Protection Act (DPDP Act).</p>
+                <p>If you believe that a child has provided us with personal information without parental consent, please contact us immediately, and we will promptly delete such records from our servers.</p>
+            </div>
+
+            <!-- Section 8 -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">08</span>
+                    <h2 class="section-title">Updates to This Policy</h2>
+                </div>
+                <p>We may periodically update this Privacy Policy to reflect enhancements in game mechanics, security infrastructure, or applicable legal standards. When modifications are published, the <em>"Effective Date"</em> at the top of this document will be updated. We encourage players to review this page periodically.</p>
+            </div>
+
+            <!-- Contact Box -->
+            <div class="contact-card">
+                <h3>Contact Developer &amp; Privacy Inquiries</h3>
+                <p>If you have any questions, feedback, or requests regarding this Privacy Policy or your player data, please contact our developer team directly:</p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <span class="contact-label">Lead Developer</span>
+                        <span class="contact-value">Rakesh Sharma</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">Direct Support Email</span>
+                        <span class="contact-value"><a href="mailto:rakeshsharma0918@gmail.com">rakeshsharma0918@gmail.com</a></span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">Game Package</span>
+                        <span class="contact-value">com.games.PolarityMR.Android</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">GitHub Repository</span>
+                        <span class="contact-value"><a href="https://github.com/Rakesh0918/polarity-game" target="_blank" rel="noopener">polarity-game</a></span>
+                    </div>
+                </div>
+            </div>
+
         </article>
 
+        <!-- Footer -->
         <footer>
-            <p>&copy; 2026 POLARITY: MAGNETIC RIFT. All rights reserved.</p>
+            <p>&copy; 2026 Polarity: Magnetic Rift. All rights reserved.</p>
+            <p>Developed with passion by Rakesh Sharma &bull; Built with Flutter</p>
         </footer>
     </div>
 </body>
